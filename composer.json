@@ -1,0 +1,13 @@
+{
+  "require": {
+    "aerialship/lightsaml": "1.*",
+    "beberlei/assert": "~2.1",
+    "symfony/var-dumper": "~2.6",
+    "gregwar/cache": "~1.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "": "src"
+    }
+  }
+}

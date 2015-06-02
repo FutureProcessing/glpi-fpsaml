@@ -1,0 +1,9 @@
+src/
+vendor/
+cert/
+.cache/*
+!.cache/.gitkeep
+!cert/.gitkeep
+/cfg.php
+composer.lock
+
