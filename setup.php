@@ -46,10 +46,10 @@ function plugin_version_fpsaml()
 {
 
     return array('name' => "FP SAML",
-        'version' => '1.0.0',
+        'version' => '0.0.1',
         'author' => 'Future Processing',
         'license' => 'GPLv2+',
-        'homepage' => '',
+        'homepage' => 'http://future-processing.com',
         'minGlpiVersion' => '0.84'); // For compatibility / no install in version < 0.80
 }
 
