@@ -1,8 +1,8 @@
 # glpi-fpsaml
 
 ## Requirements
-- php >= 5.4
-- composer
+* php >= 5.4
+* composer
 
 ## Installation instruction:
 
@@ -14,10 +14,10 @@
 
 1. Edit cfg.php file, each parameter is described in file comments
 2. To configure plugin you need:
-- certificate, that is used to sign SAML messages returned by ADFS
-- certificate and private key for singing SAML requests
-- directory for caching ADFS metadata information
+    * certificate, that is used to sign SAML messages returned by ADFS
+    * certificate and private key for singing SAML requests
+    * directory for caching ADFS metadata information
 
 ## ADFS configuration
-- tutorial about how to configure ADFS for SAML 2.0 could be find here: http://wiki.servicenow.com/?title=Configuring_ADFS_2.0_to_Communicate_with_SAML_2.0#gsc.tab=0
-- ensure that in **Transform an Incoming Claim** rule **Incoming claim type** points to the property, that corresponds with GLPI username
+* tutorial about how to configure ADFS for SAML 2.0 could be find here: http://wiki.servicenow.com/?title=Configuring_ADFS_2.0_to_Communicate_with_SAML_2.0#gsc.tab=0
+* ensure that in **Transform an Incoming Claim** rule **Incoming claim type** points to the property, that corresponds with GLPI username
