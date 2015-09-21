@@ -1,5 +1,5 @@
 # glpi-fpsaml
-
+GLPI plugin that allows you to use SAML to authenticate and authorize users.
 ## Requirements
 * php >= 5.4
 * composer
