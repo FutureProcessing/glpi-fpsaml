@@ -2,13 +2,13 @@
    <name>FP SAML</name>
    <key>fpsaml</key>
    <state>stable</state>
-   <logo></logo>
+   <logo>https://cloud.githubusercontent.com/assets/7323944/10058664/fc694b1e-6246-11e5-9047-64583a3d04ae.png</logo>
    <description>
       <short>
          <en><![CDATA[GLPI plugin that allows you to use SAML to authenticate and authorize users.]]></en>
       </short>
       <long>
-         <en><![CDATA[Tested and used in production environment with AD FS (Active Diretory Federation Services 2012 R2). You can find installation instructions at plugin homepage.]]></en>
+         <en><![CDATA[Tested and used in production environment with AD FS (Active Diretory Federation Services 2012 R2). You can find installation instructions at plugin homepage.<br/><br/><a href="http://www.future-processing.com">Company website</a>]]></en>
       </long>
    </description>
    <homepage>https://github.com/FutureProcessing/glpi-fpsaml</homepage>
