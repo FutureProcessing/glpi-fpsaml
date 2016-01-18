@@ -74,22 +74,24 @@ class  PluginFpsamlMain
             $REDIRECT = "?redirect=" . rawurlencode($relayState);
         }
 
-        if ($_SESSION["glpiactiveprofile"]["interface"] == "helpdesk") {
-            if ($_SESSION['glpiactiveprofile']['create_ticket_on_login']
-                && empty($REDIRECT)
-            ) {
-                $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/helpdesk.public.php?create_ticket=1";
-            } else {
-                $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/helpdesk.public.php$REDIRECT";
-            }
+        if (isset($_SESSION["glpiactiveprofile"])) {
+            if ($_SESSION["glpiactiveprofile"]["interface"] == "helpdesk") {
+                if ($_SESSION['glpiactiveprofile']['create_ticket_on_login']
+                    && empty($REDIRECT)
+                ) {
+                    $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/helpdesk.public.php?create_ticket=1";
+                } else {
+                    $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/helpdesk.public.php$REDIRECT";
+                }
 
-        } else {
-            if ($_SESSION['glpiactiveprofile']['create_ticket_on_login']
-                && empty($REDIRECT)
-            ) {
-                $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/ticket.form.php";
             } else {
-                $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/central.php$REDIRECT";
+                if ($_SESSION['glpiactiveprofile']['create_ticket_on_login']
+                    && empty($REDIRECT)
+                ) {
+                    $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/ticket.form.php";
+                } else {
+                    $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/central.php$REDIRECT";
+                }
             }
         }
 
