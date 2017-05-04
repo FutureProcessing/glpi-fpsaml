@@ -1,7 +1,7 @@
 # glpi-fpsaml
 GLPI plugin that allows you to use SAML to authenticate and authorize users.
 ## Requirements
-* GLPI 0.85.x, 0.90.x
+* GLPI 0.85.x, 0.90.x, 9.1.x
 * php >= 5.4
 * composer
 
@@ -9,7 +9,7 @@ GLPI plugin that allows you to use SAML to authenticate and authorize users.
 
 1. Clone project into GLPI plugins directory
 2. Enter into plugin directory and run composer install
-3. Copy cfg.tpl.php and rename it to cfg.php
+3. Copy `cfg.tpl.php` and rename it to `cfg.php`
 
 ## Plugin configuration:
 
@@ -21,4 +21,4 @@ GLPI plugin that allows you to use SAML to authenticate and authorize users.
 
 ## ADFS configuration
 * tutorial about how to configure ADFS for SAML 2.0 could be find here: http://wiki.servicenow.com/?title=Configuring_ADFS_2.0_to_Communicate_with_SAML_2.0#gsc.tab=0
-* ensure that in **Transform an Incoming Claim** rule **Incoming claim type** points to the property, that corresponds with GLPI username
+* ensure that in **Transform an Incoming Claim** rule **Incoming claim type** points to the property that corresponds with GLPI username

@@ -6,3 +6,4 @@ cert/
 /cfg.php
 composer.lock
 
+.idea/
