@@ -44,8 +44,9 @@ use Fp\Saml\ServiceContainer;
  */
 function plugin_version_fpsaml()
 {
+
     return array('name' => "FP SAML",
-        'version' => '1.1.0',
+        'version' => '1.0.0',
         'author' => 'Future Processing',
         'license' => 'GPLv2+',
         'homepage' => 'http://www.future-processing.com',
@@ -63,8 +64,9 @@ function plugin_version_fpsaml()
  */
 function plugin_fpsaml_check_prerequisites()
 {
-    if (version_compare(GLPI_VERSION, '0.84', 'lt') || version_compare(GLPI_VERSION, '9.1.3', 'gt')) {
-        echo "This plugin requires GLPI >= 0.84 and GLPI <= 9.1.3";
+
+    if (version_compare(GLPI_VERSION, '0.84', 'lt') || version_compare(GLPI_VERSION, '9.4', 'gt')) {
+        echo "This plugin requires GLPI >= 0.84 and GLPI <= 9.4";
         return false;
     }
 
@@ -74,7 +76,7 @@ function plugin_fpsaml_check_prerequisites()
 /**
  * Control of the configuration
  *
- * @param boolean $verbose
+ * @param type $verbose
  * @return boolean
  */
 function plugin_fpsaml_check_config($verbose = false)
@@ -112,21 +114,40 @@ function plugin_post_init_fpsaml()
     if (strpos($_SERVER['PHP_SELF'], $pluginBaseUrl) !== false) {
         return;
     }
+	
+	
+	$rawdata = file_get_contents("php://input");
+	$action = filter_input(INPUT_GET, "action");
+	$machineid = filter_input(INPUT_GET, "machineid");
+	
+	$error = (int) 0;
+	error_log("Rawdata: ".$rawdata,(int) 0);
+	error_log("Action: ".$action, (int) 0);
+	error_log("machineid: ".$machineid,(int) 0);
+	error_log("PluginFusioninventoryCommunication exists: ".(class_exists('PluginFusioninventoryCommunication') ? 'yes' : 'no'),(int) 0);
+	error_log("Request URI: ".$_SERVER['REQUEST_URI'],(int) 0);
+	
+	if (class_exists('PluginFusioninventoryCommunication') && $_SERVER['REQUEST_URI'] == '/plugins/fusioninventory/' && strpos($_SERVER['HTTP_USER_AGENT'], 'FusionInventory-Agent_')){
+		return;	
+	} else {
+		if (!PluginFpsamlMain::isUserAuthenticated()) {
+			if (ServiceContainer::getInstance()->getSsoStateStore()->get()) {
+				PluginFpsamlMain::tryLogin(isset($_GET['redirect']) ? $_GET['redirect'] : null);
+			} else {
+				if (ServiceContainer::getInstance()->getConfig()->isForceRedirectToSignInPage()) {
+					$redirectUrl = $_SERVER['REQUEST_URI'] !== '/' ? $CFG_GLPI['url_base'] . $_SERVER['REQUEST_URI'] : null;
+					$_SERVER['REQUEST_URI'];
 
-    if (!PluginFpsamlMain::isUserAuthenticated()) {
-        if (ServiceContainer::getInstance()->getSsoStateStore()->get()) {
-            PluginFpsamlMain::tryLogin(isset($_GET['redirect']) ? $_GET['redirect'] : null);
-        } else {
-            if (ServiceContainer::getInstance()->getConfig()->isForceRedirectToSignInPage()) {
-                $redirectUrl = $_SERVER['REQUEST_URI'] !== '/' ? $CFG_GLPI['url_base'] . $_SERVER['REQUEST_URI'] : null;
-                PluginFpsamlMain::ssoRequest($redirectUrl);
-            }
-        }
-    } else {
-        if (strpos($_SERVER['PHP_SELF'], '/logout.php') !== false && ServiceContainer::getInstance()->getSsoStateStore()->get()) {
-            PluginFpsamlMain::sloRequest();
-        } elseif ($_SERVER['REQUEST_URI'] === '/') {
-            PluginFpsamlMain::redirectToMainPage();
-        }
-    }
+					PluginFpsamlMain::ssoRequest($redirectUrl);
+				}
+			}
+		} else {
+			if (strpos($_SERVER['PHP_SELF'], '/logout.php') !== false && ServiceContainer::getInstance()->getSsoStateStore()->get()) {
+				PluginFpsamlMain::sloRequest();
+			} elseif ($_SERVER['REQUEST_URI'] === '/') {
+				PluginFpsamlMain::redirectToMainPage();
+			}
+		}
+	
+	}
 }

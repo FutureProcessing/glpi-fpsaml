@@ -1,5 +1,5 @@
 <?php
-
+global $CFG_GLPI;
 if (!defined('GLPI_ROOT')) {
     define('GLPI_ROOT', '../../..');
 }
@@ -7,7 +7,7 @@ if (!defined('GLPI_ROOT')) {
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(GLPI_ROOT . "/inc/autoload.function.php");
 require_once(GLPI_ROOT . "/inc/db.function.php");
-require_once(GLPI_ROOT . "/config/config.php");
+##require_once(GLPI_ROOT . "/config/config.php");
 
 $baseUrl = $CFG_GLPI['url_base'] . '/plugins/fpsaml/front/';
 
