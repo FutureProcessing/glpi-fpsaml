@@ -35,14 +35,16 @@ class  PluginFpsamlMain
         return ServiceContainer::getInstance()->getSsoStateStore()->get();
     }
 
-    static function ssoRequest($relayState = null)
-    {
-        $request = new Authn();
-        if ($relayState) {
-            $request->getMessage()->getMessage()->setRelayState($relayState);
-        }
-        $request->send();
-    }
+   static function ssoRequest($relayState = null)
+   {
+      $request = new Authn();
+      if ($relayState) {
+         $request->getMessage()->getMessage()->setRelayState($relayState);
+      }
+      $request->send();
+
+      exit;
+   }
 
     static function sloRequest()
     {
@@ -64,37 +66,40 @@ class  PluginFpsamlMain
         self::redirectToMainPage($relayState);
     }
 
-    static function redirectToMainPage($relayState = null)
-    {
-        global $CFG_GLPI;
-        $REDIRECT = "";
-        $destinationUrl = $CFG_GLPI['url_base'];
+   static function redirectToMainPage($relayState = null)
+   {
+      global $CFG_GLPI;
+      $redirect = self::getRedirect($relayState);
+      $destination_url = $CFG_GLPI['url_base'];
 
-        if ($relayState) {
-            $REDIRECT = "?redirect=" . rawurlencode($relayState);
-        }
+      if (!isset($_SESSION["glpiactiveprofile"])) {
+         header("Location: " . $destination_url . $redirect);
 
-        if (isset($_SESSION["glpiactiveprofile"])) {
-            if ($_SESSION["glpiactiveprofile"]["interface"] == "helpdesk") {
-                if ($_SESSION['glpiactiveprofile']['create_ticket_on_login']
-                    && empty($REDIRECT)
-                ) {
-                    $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/helpdesk.public.php?create_ticket=1";
-                } else {
-                    $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/helpdesk.public.php$REDIRECT";
-                }
+         exit;
+      }
 
-            } else {
-                if ($_SESSION['glpiactiveprofile']['create_ticket_on_login']
-                    && empty($REDIRECT)
-                ) {
-                    $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/ticket.form.php";
-                } else {
-                    $destinationUrl .= $CFG_GLPI['root_doc'] . "/front/central.php$REDIRECT";
-                }
-            }
-        }
+      if ($_SESSION['glpiactiveprofile']['interface'] == 'helpdesk') {
+         if ($_SESSION['glpiactiveprofile']['create_ticket_on_login'] && empty($redirect)) {
+            $destination_url .= $CFG_GLPI['root_doc'] . '/front/helpdesk.public.php?create_ticket=1';
+         } else {
+            $destination_url .= $CFG_GLPI['root_doc'] . '/front/helpdesk.public.php' . $redirect;
+         }
+      } else {
+         if ($_SESSION['glpiactiveprofile']['create_ticket_on_login'] && empty($redirect)) {
+            $destination_url .= $CFG_GLPI['root_doc'] . '/front/ticket.form.php';
+         } else {
+            $destination_url .= $CFG_GLPI['root_doc'] . '/front/central.php' . $redirect;
+         }
+      }
 
-        header("Location: " . $destinationUrl);
-    }
+      header('Location: ' . $destination_url);
+
+      exit;
+   }
+
+   private static function getRedirect($http_parameter = null): string
+   {
+      return empty($http_parameter) ? '' : '?redirect=' . rawurlencode($http_parameter);
+   }
+
 }
