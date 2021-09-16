@@ -78,7 +78,7 @@ class  PluginFpsamlMain
          exit;
       }
 
-      if ($_SESSION['glpiactiveprofile']['interface'] == 'helpdesk') {
+      if ($_SESSION['glpiactiveprofile']['interface'] === 'helpdesk') {
          if ($_SESSION['glpiactiveprofile']['create_ticket_on_login'] && empty($redirect)) {
             $destination_url .= $CFG_GLPI['root_doc'] . '/front/helpdesk.public.php?create_ticket=1';
          } else {
