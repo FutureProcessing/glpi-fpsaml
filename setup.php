@@ -63,8 +63,8 @@ function plugin_version_fpsaml()
  */
 function plugin_fpsaml_check_prerequisites()
 {
-    if (version_compare(GLPI_VERSION, '0.84', 'lt') || version_compare(GLPI_VERSION, '9.5.5', 'gt')) {
-        echo "This plugin requires GLPI >= 0.84 and GLPI <= 9.5.5";
+    if (version_compare(GLPI_VERSION, '0.84', 'lt') || version_compare(GLPI_VERSION, '9.6', '>=')) {
+        echo "This plugin requires GLPI >= 0.84 and GLPI < 9.6";
         return false;
     }
 
