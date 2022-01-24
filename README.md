@@ -21,5 +21,5 @@ GLPI plugin that allows you to use SAML to authenticate and authorize users.
     * directory for caching ADFS metadata information
 
 ## ADFS configuration
-* sample tutorial about how to configure ADFS for SAML 2.0 could be find here: https://docs.microsoft.com/pl-pl/powerapps/maker/portals/configure/configure-saml2-settings
+* sample tutorial about how to configure ADFS for SAML 2.0 could be find here: https://docs.microsoft.com/en-us/powerapps/maker/portals/configure/configure-saml2-settings
 * ensure that in **Transform an Incoming Claim** rule **Incoming claim type** points to the property that corresponds with GLPI username
