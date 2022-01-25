@@ -9,7 +9,7 @@ GLPI plugin that allows you to use SAML to authenticate and authorize users.
 
 1. Clone project into GLPI plugins directory
 2. Rename the plugin directory name from glpi-fpsaml to fpsaml
-3. Enter into plugin directory and run composer install
+3. Enter into plugin directory and run `composer install`
 4. Copy `cfg.tpl.php` and rename it to `cfg.php`
 
 ## Plugin configuration:
