@@ -8,8 +8,9 @@ GLPI plugin that allows you to use SAML to authenticate and authorize users.
 ## Installation instruction:
 
 1. Clone project into GLPI plugins directory
-2. Enter into plugin directory and run composer install
-3. Copy `cfg.tpl.php` and rename it to `cfg.php`
+2. Rename the plugin directory name from glpi-fpsaml to fpsaml
+3. Enter into plugin directory and run `composer install`
+4. Copy `cfg.tpl.php` and rename it to `cfg.php`
 
 ## Plugin configuration:
 
@@ -20,5 +21,5 @@ GLPI plugin that allows you to use SAML to authenticate and authorize users.
     * directory for caching ADFS metadata information
 
 ## ADFS configuration
-* sample tutorial about how to configure ADFS for SAML 2.0 could be find here: https://docs.microsoft.com/pl-pl/powerapps/maker/portals/configure/configure-saml2-settings
+* sample tutorial about how to configure ADFS for SAML 2.0 could be find here: https://docs.microsoft.com/en-us/powerapps/maker/portals/configure/configure-saml2-settings
 * ensure that in **Transform an Incoming Claim** rule **Incoming claim type** points to the property that corresponds with GLPI username
