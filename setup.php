@@ -1,5 +1,7 @@
 <?php
 
+const PLUGIN_FPSAML_VERSION = '1.2.0';
+
 /*
    ------------------------------------------------------------------------
    fpsaml - Sso SAML plugin
@@ -44,12 +46,19 @@ use Fp\Saml\ServiceContainer;
  */
 function plugin_version_fpsaml()
 {
-    return array('name' => "FP SAML",
-        'version' => '1.1.0',
-        'author' => 'Future Processing',
-        'license' => 'GPLv2+',
-        'homepage' => 'http://www.future-processing.com',
-        'minGlpiVersion' => '0.84'); // For compatibility / no install in version < 0.80
+   return [
+      'name' => 'FP SAML',
+      'version' => PLUGIN_FPSAML_VERSION,
+      'author' => '<a href="https://www.future-processing.com">Future Processing</a>',
+      'license' => 'AGPLv3+',
+      'homepage' => 'https://www.future-processing.com',
+      'requirements' => [
+         'glpi' => [
+            'min' => '9.6',
+            'max' => '10.1',
+         ]
+      ]
+   ];
 }
 
 /**
@@ -63,11 +72,6 @@ function plugin_version_fpsaml()
  */
 function plugin_fpsaml_check_prerequisites()
 {
-    if (version_compare(GLPI_VERSION, '0.84', '<') || version_compare(GLPI_VERSION, '9.6', '>=')) {
-        echo "This plugin requires GLPI >= 0.84 and GLPI < 9.6";
-        return false;
-    }
-
     return true;
 }
 
