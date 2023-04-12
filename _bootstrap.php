@@ -5,6 +5,8 @@ if (!defined('GLPI_ROOT')) {
 }
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once GLPI_ROOT . '/inc/db.function.php';
+require_once GLPI_ROOT . '/inc/config.php';
 
 global $CFG_GLPI;
 
