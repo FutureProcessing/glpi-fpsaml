@@ -25,6 +25,7 @@ class Config
      * @var string absolute path tu cache directory
      */
     private $cacheDir;
+
     /**
      * @var bool
      */
@@ -39,6 +40,11 @@ class Config
      * @var bool
      */
     private $forceRedirectToSignInPage;
+
+    /**
+     * @var string[]
+     */
+    private $urisIgnored;
 
     /**
      * @return int
@@ -173,6 +179,25 @@ class Config
     {
         $this->forceRedirectToSignInPage = (bool)$forceRedirectToSignInPage;
 
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getUrisIgnored(): array
+    {
+        return $this->urisIgnored;
+    }
+
+    /**
+     * @param  string[]  $urisIgnored
+     *
+     * @return Config
+     */
+    public function setUrisIgnored(array $urisIgnored): Config
+    {
+        $this->urisIgnored = $urisIgnored;
         return $this;
     }
 }
