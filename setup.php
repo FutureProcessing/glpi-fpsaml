@@ -111,13 +111,25 @@ function plugin_post_init_fpsaml()
 {
     global $CFG_GLPI;
 
+    if (php_sapi_name() === 'cli') {
+        return;
+    }
+
     $pluginBaseUrl = '/plugins/fpsaml/front/';
 
     if (strpos($_SERVER['PHP_SELF'], $pluginBaseUrl) !== false) {
         return;
     }
 
-    if (!PluginFpsamlMain::isUserAuthenticated()) {
+    $isAuth = PluginFpsamlMain::isUserAuthenticated();
+
+    foreach (ServiceContainer::getInstance()->getConfig()->getUrisIgnored() as $uri) {
+        if (strpos($_SERVER['PHP_SELF'], $uri) !== false) {
+            return;
+        }
+    }
+
+    if (!$isAuth) {
         if (ServiceContainer::getInstance()->getSsoStateStore()->get()) {
             PluginFpsamlMain::tryLogin(isset($_GET['redirect']) ? $_GET['redirect'] : null);
         } else {

@@ -52,6 +52,7 @@ $serviceConfiguration->setSpConfig($spConfig)
                      ->setCacheLifetime($config['entityDescriptionCacheLifetime'])
                      ->setNameIdFormat($config['nameIdFormat'])
                      ->setForceRedirectToSignInPage($config['forceRedirectToSignInPage'])
+                     ->setUrisIgnored($config['urisIgnored'])
                      ->setIdpConfig($idpConfig);
 
 $serviceContainer = ServiceContainer::getInstance();

@@ -54,4 +54,9 @@ return array(
      * @var boolean indicates if user that is unauthenticated should be automatically redirect to ADFS sign-in page
      */
     'forceRedirectToSignInPage'         => false,
+
+    /**
+     * @var string[] a list of URIs for which this plugin should be disabled for; use without domain part; checks are greedy
+     */
+    'urisIgnored' => ['apirest.php'],
 );
