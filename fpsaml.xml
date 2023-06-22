@@ -8,15 +8,19 @@
          <en><![CDATA[GLPI plugin that allows you to use SAML to authenticate and authorize users.]]></en>
       </short>
       <long>
-         <en><![CDATA[Tested and used in production environment with AD FS (Active Directory Federation Services 2012 R2). You can find installation instructions at plugin homepage.<br/><br/>Changelog:<br/><br/>2021.09:<br/><br/> - plugin is now compatible with GLPI 9.5.x (up to 9.6)<br/> - fixed issue with redirect to main page<br/><br/> 2015.12:<br/><br/> - plugin is now compatible with GLPI 0.90<br/><br/>2017.05:<br/><br/>- plugin is now compatible with GLPI 9.1.3<br/><br/><a href="http://www.future-processing.com">Company website</a>]]></en>
+         <en><![CDATA[Tested and used in production environment with AD FS (Active Directory Federation Services 2012 R2). You can find installation instructions at plugin homepage.<br/><br/>Changelog:<br/><br/>2023.06:<br/><br/> - plugin is now compatible with GLPI 10.0.x (up to 10.0.7)<br/> - plugin is no longer guaranteed to be compatible with GLPI 9.x<br/><br/>2021.09:<br/><br/> - plugin is now compatible with GLPI 9.5.x (up to 9.6)<br/> - fixed issue with redirect to main page<br/><br/> 2015.12:<br/><br/> - plugin is now compatible with GLPI 0.90<br/><br/>2017.05:<br/><br/>- plugin is now compatible with GLPI 9.1.3<br/><br/><a href="http://www.future-processing.com">Company website</a>]]></en>
       </long>
    </description>
    <homepage>https://github.com/FutureProcessing/glpi-fpsaml</homepage>
-   <download>https://github.com/FutureProcessing/glpi-fpsaml/archive/refs/tags/v.1.2.0.tar.gz</download>
+   <download>https://github.com/FutureProcessing/glpi-fpsaml/archive/refs/tags/v.2.0.0.tar.gz</download>
    <authors>
       <author>Future Processing</author>
    </authors>
    <versions>
+      <version>
+         <num>2.0</num>
+         <compatibility>10.0.x</compatibility>
+      </version>
       <version>
           <num>1.2</num>
          <compatibility>9.x - 9.6</compatibility>

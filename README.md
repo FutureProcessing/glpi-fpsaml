@@ -1,7 +1,10 @@
 # glpi-fpsaml
+
 GLPI plugin that allows you to use SAML to authenticate and authorize users.
+
 ## Requirements
-* GLPI 0.85.x, 0.90.x, up to 9.5.x
+
+* GLPI 0.85.x, 0.90.x, up to 9.6.x for version 1.2; GLPI 10.0.x (up to 10.0.7) for version 2.0
 * php >= 5.4
 * composer
 
@@ -21,5 +24,6 @@ GLPI plugin that allows you to use SAML to authenticate and authorize users.
     * directory for caching ADFS metadata information
 
 ## ADFS configuration
+
 * sample tutorial about how to configure ADFS for SAML 2.0 could be find here: https://docs.microsoft.com/en-us/powerapps/maker/portals/configure/configure-saml2-settings
 * ensure that in **Transform an Incoming Claim** rule **Incoming claim type** points to the property that corresponds with GLPI username

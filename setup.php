@@ -1,6 +1,6 @@
 <?php
 
-const PLUGIN_FPSAML_VERSION = '1.2.0';
+const PLUGIN_FPSAML_VERSION = '2.0.0';
 
 /*
    ------------------------------------------------------------------------
@@ -37,6 +37,7 @@ const PLUGIN_FPSAML_VERSION = '1.2.0';
 
    ------------------------------------------------------------------------
  */
+
 use Fp\Saml\ServiceContainer;
 
 /**
@@ -54,7 +55,7 @@ function plugin_version_fpsaml()
       'homepage' => 'https://www.future-processing.com',
       'requirements' => [
          'glpi' => [
-            'min' => '9.6',
+            'min' => '10.0',
             'max' => '10.1',
          ]
       ]
